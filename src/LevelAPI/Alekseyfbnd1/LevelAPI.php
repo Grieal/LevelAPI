@@ -31,6 +31,17 @@ class LevelAPI extends PluginBase {
     $this->users = new SQLite3($this, "users");
   }
   
+  public function registerPlayer (string $player) :string {
+    $this->users->prepare("SELECT * FROM users WHERE name = :name"); 
+    $this->users->bind(":name", $player);
+    $this->users->execute();
+    if (count($this->users->get()) == 0) {
+      $this->users->prepare("INSERT INTO users (name) VALUES (:name)"); 
+      $this->users->bind(":name", $player);
+      $this->users->execute();
+    }
+  }
+  
   public function getLevel (string $player) :string {
     $this->users->prepare("SELECT * FROM users WHERE name = :name"); 
     $this->users->bind(":name", $player);
