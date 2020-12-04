@@ -1,6 +1,6 @@
 <?php
 
-namespace MeEconomy\Alekseyfbnd1;
+namespace LevelAPI\Alekseyfbnd1;
 
 class SQLite3 {
 	
