@@ -20,14 +20,7 @@ class TopPointCommand extends Command {
     $this->main->users->prepare("SELECT * FROM users ORDER BY level DESC LIMIT 10");
     $this->main->users->execute();
     $get = $this->main->users->get();
-    $message = [];
-    for ($i = 1; $i < 10; $i++) {
-      $message[] = "{$i}. {$get[0]["name"]}: {$get[0]["point"]}$";
-    }
-    
-    foreach ($message as $msg) {
-      $sender->sendMessage("{$msg}\n");
-    }
+    $sender->sendMessage("{$get[0]["name"]}: {$get[0]["point"]}\n");
     return true;
   }
 
