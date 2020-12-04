@@ -36,7 +36,7 @@ class LevelAPI extends PluginBase {
     $this->users = new SQLite3($this, "users");
   }
   
-  public function registerPlayer (string $player) :string {
+  public function registerPlayer (string $player) {
     $this->users->prepare("SELECT * FROM users WHERE name = :name"); 
     $this->users->bind(":name", $player);
     $this->users->execute();
@@ -47,42 +47,42 @@ class LevelAPI extends PluginBase {
     }
   }
   
-  public function getLevel (string $player) :string {
+  public function getLevel (string $player) {
     $this->users->prepare("SELECT * FROM users WHERE name = :name"); 
     $this->users->bind(":name", $player);
     $this->users->execute();
     return $this->users->get()[0]["level"];
   }
   
-  public function getPoint (string $player) :string {
+  public function getPoint (string $player) {
     $this->users->prepare("SELECT * FROM users WHERE name = :name"); 
     $this->users->bind(":name", $player);
     $this->users->execute();
     return $this->users->get()[0]["point"];
   }
   
-  public function reduceLevel (string $player, int $count) :void {
+  public function reduceLevel (string $player, int $count) {
     $this->users->prepare("UPDATE users SET level = :level WHERE name = :name"); 
     $this->users->bind(":level", $this->getLevel($player) - $count);
     $this->users->bind(":name", $player);
     $this->users->execute();
   }
   
-  public function reducePoint (string $player, int $count) :void {
+  public function reducePoint (string $player, int $count) {
     $this->users->prepare("UPDATE users SET point = :point WHERE name = :name"); 
     $this->users->bind(":point", $this->getPoint($player) - $count);
     $this->users->bind(":name", $player);
     $this->users->execute();
   }
   
-  public function addLevel (string $player, int $count) :void {
+  public function addLevel (string $player, int $count) {
     $this->users->prepare("UPDATE users SET level = :level WHERE name = :name"); 
     $this->users->bind(":level", $this->getLevel($player) + $count);
     $this->users->bind(":name", $player);
     $this->users->execute();
   }
   
-  public function addPoint (string $player, int $count) :void {
+  public function addPoint (string $player, int $count) {
     $this->users->prepare("UPDATE users SET point = :point WHERE name = :name"); 
     $this->users->bind(":point", $this->getPoint($player) + $count);
     $this->users->bind(":name", $player);
