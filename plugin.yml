@@ -1,0 +1,15 @@
+name: LevelAPI
+main: LevelAPI\Alekseyfbnd1\LevelAPI
+api: 3.15.4
+version: 1.1
+author: Alekseyfbnd1
+
+permissions:
+  mylevel.command:
+    default: true
+  mypoint.command: 
+    default: true
+  toplevel.command:
+    default: true
+  toppoint.command:
+    default: true
