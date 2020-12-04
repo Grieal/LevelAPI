@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS users {
+  name TEXT NOT NULL,
+  level INTEGER DEFAULT 1,
+  point INTEGER DEFAULT 0,
+}
