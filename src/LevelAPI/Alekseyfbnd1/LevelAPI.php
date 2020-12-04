@@ -2,6 +2,11 @@
 
 namespace LevelAPI\Alekseyfbnd1;
 
+use LevelAPI\Alekseyfbnd1\command\MyLevelCommand;
+use LevelAPI\Alekseyfbnd1\command\MyPointCommand;
+use LevelAPI\Alekseyfbnd1\command\TopLevelCommand;
+use LevelAPI\Alekseyfbnd1\command\TopPointCommand;
+
 use pocketmine\plugin\PluginBase;
 use pocketmine\{Server, Player};
 
@@ -12,9 +17,9 @@ class LevelAPI extends PluginBase {
   public function onLoad() :void {
     $commands = [
       new MyLevelCommand($this, "mylevel", "твой уровень", "mylevel.command"),
-      new MyLevelCommand($this, "mypoint", "твой опыт", "mypoint.command"),
-      new MyLevelCommand($this, "toplevel", "топ уровней", "toplevel.command"),
-      new MyLevelCommand($this, "toppoint", "топ опыта", "toppoint.command")
+      new MyPointCommand($this, "mypoint", "твой опыт", "mypoint.command"),
+      new TopLevelCommand($this, "toplevel", "топ уровней", "toplevel.command"),
+      new TopPointCommand($this, "toppoint", "топ опыта", "toppoint.command")
     ];
     
     foreach ($commands as $command) {
